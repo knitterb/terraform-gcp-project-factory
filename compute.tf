@@ -11,7 +11,6 @@ resource "google_compute_instance" "test-compute" {
   }
 
   network_interface {
-    subnetwork = "subnet-02"
-    subnetwork_project = "${module.project-factory.project_id}"
+    network = "${module.vpc-network.network_self_link}"
   }
 }
