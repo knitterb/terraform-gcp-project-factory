@@ -11,7 +11,7 @@ resource "google_compute_instance" "test-compute" {
   }
 
   network_interface {
-    subnetwork = "${module.vpc-network.subnet_names[1]}"
+    subnetwork = "${module.vpc-network.subnet_names.1}"
     subnetwork_project = "${module.project-factory.project_id}"
   }
 }
