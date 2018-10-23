@@ -52,9 +52,4 @@ resource "google_compute_firewall" "fw-ssh-allow" {
 }
 
 
-resource "google_compute_network_peering" "peering1" {
-  name = "peering-2to1"
-  network = "${module.vpc-network.network_self_link}"
-  peer_network = "https://www.googleapis.com/compute/v1/projects/knitter-build-project1/global/networks/my-network-vpc"
-}
 

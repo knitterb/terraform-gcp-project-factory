@@ -30,3 +30,5 @@ variable "project_prefix" {}
 
 variable "credentials_path" {}
 
+variable "project_id" {}
+

@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-output "project_info_example" {
+output "project_id" {
   value       = "${module.project-factory.project_id}"
   description = "The ID of the created project"
 }
 
-output "domain_example" {
-  value       = "${module.project-factory.domain}"
-  description = "The organization's domain"
+output "network_vpc" {
+  value       = "${module.vpc-network.network_name}"
 }
+
+output "network_self_link" {
+  value = "${module.vpc-network.network_self_link}"
+}
+
+
+

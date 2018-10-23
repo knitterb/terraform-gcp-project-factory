@@ -27,3 +27,4 @@ variable "repository" {
 }
 
 variable "project_prefix" {}
+variable "credentials_path" {}

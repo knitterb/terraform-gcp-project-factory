@@ -14,16 +14,9 @@
  * limitations under the License.
  */
 
-terraform {
-  backend "gcs" {
-    credentials="credentials.json"
-    prefix = "multi-project/project2"
-  }
-}
-
 
 locals {
-  credentials_file_path = "credentials.json"
+  credentials_file_path = "${var.credentials_path}"
 }
 
 /******************************************
@@ -35,8 +28,8 @@ provider "google" {
 
 module "project-factory" {
   source            = "github.com/terraform-google-modules/terraform-google-project-factory?ref=gsuite-refactor"
-  random_project_id = "false"
-  name              = "${var.project_prefix}-project2"
+  random_project_id = "true"
+  name              = "${var.project_prefix}"
   org_id            = "${var.organization_id}"
   billing_account   = "${var.billing_account}"
   credentials_path  = "${local.credentials_file_path}"
