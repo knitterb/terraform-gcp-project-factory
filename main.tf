@@ -33,9 +33,7 @@ provider "google" {
 }
 
 module "project-factory" {
-  //source            = "github.com/knitterb/terraform-google-project-factory?ref=gsuite-refactor"
   source            = "github.com/terraform-google-modules/terraform-google-project-factory?ref=gsuite-refactor"
-  //source            = "github.com/terraform-google-modules/terraform-google-project-factory?ref=v0.2.0"
   random_project_id = "true"
   name              = "knitter-build"
   org_id            = "${var.organization_id}"
