@@ -35,7 +35,7 @@ provider "google" {
 module "project-factory" {
   source            = "github.com/terraform-google-modules/terraform-google-project-factory?ref=gsuite-refactor"
   random_project_id = "true"
-  name              = "knitter-build"
+  name              = "${var.project_prefix}"
   org_id            = "${var.organization_id}"
   billing_account   = "${var.billing_account}"
   credentials_path  = "${local.credentials_file_path}"

@@ -34,11 +34,11 @@ resource "google_cloudbuild_trigger" "build_trigger" {
     }
     step {
       name = "gcr.io/cloud-builders/docker"
-      args = "run --network=host gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA terraform plan -lock=true -lock-timeout=${var.lock_timeout}s -var organization_id=${var.organization_id} -var billing_account=${var.billing_account} -var repository=${var.repository}"
+      args = "run --network=host gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA terraform plan -lock=true -lock-timeout=${var.lock_timeout}s -var organization_id=${var.organization_id} -var billing_account=${var.billing_account} -var repository=${var.repository} -var project_prefix=knitter-build"
     }
     step {
       name = "gcr.io/cloud-builders/docker"
-      args = "run --network=host gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA terraform apply -lock=true -lock-timeout=${var.lock_timeout}s -auto-approve -var organization_id=${var.organization_id} -var billing_account=${var.billing_account} -var repository=${var.repository}"
+      args = "run --network=host gcr.io/$PROJECT_ID/$REPO_NAME:$SHORT_SHA terraform apply -lock=true -lock-timeout=${var.lock_timeout}s -auto-approve -var organization_id=${var.organization_id} -var billing_account=${var.billing_account} -var repository=${var.repository} -var project_prefix=knitter-build"
     }
   }
 }

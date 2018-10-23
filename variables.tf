@@ -26,4 +26,4 @@ variable "repository" {
   description = "The name of the source code repository within the defined project"
 }
 
-
+variable "project_prefix" {}
