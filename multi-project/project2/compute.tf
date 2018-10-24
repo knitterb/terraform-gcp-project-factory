@@ -64,13 +64,8 @@ resource "google_compute_instance" "test-compute-shared" {
     }
   }
 
-  depends_on = ["google_compute_shared_vpc_service_project.shared-vpc-network-link"]
 }
 
-resource "google_compute_shared_vpc_service_project" "shared-vpc-network-link" {
-  host_project    = "${var.shared_network_project_id}"
-  service_project = "${module.project-factory.project_id}"
-}
 
 
 
