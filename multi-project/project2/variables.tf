@@ -33,4 +33,4 @@ variable "credentials_path" {}
 variable "shared_network_self_link" {}
 variable "shared_network_project_id" {}
 
-variable "shared_vpc_service_complete" {}
+

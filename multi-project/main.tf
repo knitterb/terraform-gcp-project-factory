@@ -25,7 +25,6 @@ module "project_two" {
 
   shared_network_self_link = "${module.project_three.network_vpc}"
   shared_network_project_id = "${module.project_three.project_id}"
-  shared_vpc_service_complete = "${module.network.shared_vpc_service_complete}"
 }
 
 module "project_three" {
