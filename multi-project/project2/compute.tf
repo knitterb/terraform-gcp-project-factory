@@ -63,6 +63,14 @@ resource "google_compute_instance" "test-compute-shared" {
       // Ephemeral IP
     }
   }
+
+  depends_on = ["null_resource.shared_vpc_service_complete"]
+}
+
+resource "null_resource" "shared_vpc_service_complete" {
+  triggers {
+    null = "${var.shared_vpc_service_complete}"
+  }
 }
 
 
