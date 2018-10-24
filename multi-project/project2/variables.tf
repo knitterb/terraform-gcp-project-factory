@@ -30,3 +30,6 @@ variable "project_prefix" {}
 
 variable "credentials_path" {}
 
+variable "shared_network_self_link" {}
+variable "shared_network_project_id" {}
+

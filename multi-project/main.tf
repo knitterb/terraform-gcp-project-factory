@@ -22,6 +22,9 @@ module "project_two" {
   organization_id = "${var.organization_id}"
   billing_account = "${var.billing_account}"
   project_prefix = "${var.project_prefix}"
+
+  shared_network_self_link = "${module.project_three.network_vpc}"
+  shared_network_project_id = "${module.project_three.project_id}"
 }
 
 module "project_three" {
