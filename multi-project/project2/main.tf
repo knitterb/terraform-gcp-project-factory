@@ -27,21 +27,15 @@ provider "google" {
 }
 
 module "project-factory" {
-  # source              = "github.com/terraform-google-modules/terraform-google-project-factory?ref=gsuite-refactor"
-  source              = "../../../terraform-google-project-factory-bk"
+  source              = "github.com/terraform-google-modules/terraform-google-project-factory?ref=gsuite-refactor"
+  # source              = "../../../terraform-google-project-factory-bk"
   random_project_id   = "true"
   name                = "${var.project_prefix}-project2"
   org_id              = "${var.organization_id}"
   billing_account     = "${var.billing_account}"
   credentials_path    = "${local.credentials_file_path}"
-  shared_vpc          = "${var.shared_network_project_id}"
-  shared_vpc_subnets  = 
-    [
-      "projects/${var.shared_network_project_id}/regions/us-east1/subnetworks/shared-subnet-east1",
-      "projects/${var.shared_network_project_id}/regions/us-central1/subnetworks/shared-subnet-central1",
-      "projects/${var.shared_network_project_id}/regions/us-west1/subnetworks/shared-subnet-west1",
-    ]
 }
+
 
 
 

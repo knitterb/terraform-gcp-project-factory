@@ -64,6 +64,8 @@ resource "google_compute_instance" "test-compute-shared" {
     }
   }
 
+  depends_on = ["google_compute_shared_vpc_service_project.shared_vpc_service"]
+
 }
 
 

@@ -52,4 +52,9 @@ resource "google_compute_firewall" "fw-ssh-allow" {
 }
 
 
+resource "google_compute_shared_vpc_service_project" "shared_vpc_service" {
+  host_project      = "${var.shared_network_project_id}"
+  service_project   = "${module.project-factory.project_id}"
+}
+
 

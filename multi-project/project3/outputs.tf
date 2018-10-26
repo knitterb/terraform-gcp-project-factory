@@ -16,7 +16,6 @@
 output "project_id" {
   value       = "${module.project-factory.project_id}"
   description = "The ID of the created project"
-  depends_on = ["google_compute_shared_vpc_host_project.host"]
 }
 
 output "network_vpc" {

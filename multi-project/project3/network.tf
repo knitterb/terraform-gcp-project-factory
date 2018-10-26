@@ -2,7 +2,7 @@ module "vpc-network" {
   source       = "github.com/terraform-google-modules/terraform-google-network"
   network_name = "shared-network-vpc"
   project_id   = "${module.project-factory.project_id}"
-  shared_vpc_host = "true"
+  shared_vpc_host = "true" 
 
   subnets = [
     {
