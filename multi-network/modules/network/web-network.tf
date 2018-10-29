@@ -1,7 +1,7 @@
 
 module "vpc-web" {
   source       = "github.com/terraform-google-modules/terraform-google-network"
-  network_name = "web"
+  network_name = "vpc-web"
   project_id   = "${var.project_id}"
   # shared_vpc_host = "true" 
 
@@ -9,7 +9,7 @@ module "vpc-web" {
     {
       subnet_name           = "web-sec"
       subnet_ip             = "10.20.10.0/24"
-      subnet_region         = "us-west1"
+      subnet_region         = "us-central1"
     },
     {
       subnet_name           = "web-int"
@@ -19,7 +19,7 @@ module "vpc-web" {
     {
       subnet_name           = "web-ext"
       subnet_ip             = "10.20.30.0/24"
-      subnet_region         = "us-east1"
+      subnet_region         = "us-central1"
     },
   ]
 

@@ -2,7 +2,7 @@
 
 module "vpc-app" {
   source       = "github.com/terraform-google-modules/terraform-google-network"
-  network_name = "app"
+  network_name = "vpc-app"
   project_id   = "${var.project_id}"
   # shared_vpc_host = "true" 
 
@@ -10,7 +10,7 @@ module "vpc-app" {
     {
       subnet_name           = "app-sec"
       subnet_ip             = "10.10.10.0/24"
-      subnet_region         = "us-west1"
+      subnet_region         = "us-central1"
     },
     {
       subnet_name           = "app-c"
@@ -20,12 +20,12 @@ module "vpc-app" {
     {
       subnet_name           = "app-s"
       subnet_ip             = "10.10.30.0/24"
-      subnet_region         = "us-east1"
+      subnet_region         = "us-central1"
     },
     {
       subnet_name           = "app-b"
       subnet_ip             = "10.10.40.0/24"
-      subnet_region         = "us-east1"
+      subnet_region         = "us-central1"
     },
   ]
 
