@@ -28,15 +28,12 @@ resource "google_compute_forwarding_rule" "fr-tr-to-web-vpn_udp4500" {
   ip_address  = "${google_compute_address.tr-to-web-vpn-ip.address}"
   target      = "${google_compute_vpn_gateway.tr-to-web-vpn-gateway.self_link}"
 }
-resource "google_compute_vpn_tunnel" "tr-to-web-vpn_tunnel1" {
-  name          = "tr-to-web-vpn-tunnel1"
+resource "google_compute_vpn_tunnel" "tr-to-web-vpn_tunnel1-2" {
+  name          = "tr-to-web-vpn-tunnel1-2"
   peer_ip       = "${google_compute_address.web-to-tr-vpn-ip.address}"
   shared_secret = "secret"
 
   target_vpn_gateway = "${google_compute_vpn_gateway.tr-to-web-vpn-gateway.self_link}"
-  local_traffic_selector = [
-    "10.20.10.0/24",
-  ]
 
   depends_on = [
     "google_compute_forwarding_rule.fr-tr-to-web-vpn_esp",
@@ -50,10 +47,10 @@ resource "google_compute_route" "tr-to-web-vpn-route1" {
   dest_range = "10.20.10.0/24"
   priority   = 1000
 
-  next_hop_vpn_tunnel = "${google_compute_vpn_tunnel.tr-to-web-vpn_tunnel1.self_link}"
+  next_hop_vpn_tunnel = "${google_compute_vpn_tunnel.tr-to-web-vpn_tunnel1-2.self_link}"
 
   depends_on = [
-    "google_compute_vpn_tunnel.tr-to-web-vpn_tunnel1"
+    "google_compute_vpn_tunnel.tr-to-web-vpn_tunnel1-2"
   ]
 }
 
@@ -88,15 +85,12 @@ resource "google_compute_forwarding_rule" "fr-web-to-tr-vpn_udp4500" {
   ip_address  = "${google_compute_address.web-to-tr-vpn-ip.address}"
   target      = "${google_compute_vpn_gateway.web-to-tr-vpn-gateway.self_link}"
 }
-resource "google_compute_vpn_tunnel" "web-to-tr-vpn_tunnel1" {
-  name          = "web-to-tr-vpn-tunnel1"
+resource "google_compute_vpn_tunnel" "web-to-tr-vpn_tunnel1-2" {
+  name          = "web-to-tr-vpn-tunnel1-2"
   peer_ip       = "${google_compute_address.tr-to-web-vpn-ip.address}"
   shared_secret = "secret"
 
   target_vpn_gateway = "${google_compute_vpn_gateway.web-to-tr-vpn-gateway.self_link}"
-  local_traffic_selector = [
-    "10.30.10.0/24",
-  ]
 
   depends_on = [
     "google_compute_forwarding_rule.fr-web-to-tr-vpn_esp",
@@ -110,10 +104,10 @@ resource "google_compute_route" "web-to-tr-vpn-route1" {
   dest_range = "10.30.10.0/24"
   priority   = 1000
 
-  next_hop_vpn_tunnel = "${google_compute_vpn_tunnel.web-to-tr-vpn_tunnel1.self_link}"
+  next_hop_vpn_tunnel = "${google_compute_vpn_tunnel.web-to-tr-vpn_tunnel1-2.self_link}"
 
   depends_on = [
-    "google_compute_vpn_tunnel.web-to-tr-vpn_tunnel1"
+    "google_compute_vpn_tunnel.web-to-tr-vpn_tunnel1-2"
   ]
 }
 
